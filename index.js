@@ -41,6 +41,7 @@ app.post('/login', async (req, res) => {
         // Requisição ao json-server
         const response = await axios.get('http://localhost:5000/authentication'); // URL do json-server
         const users = response.data;
+        console.log("Lista de auths: ", users)
 
         // Busca o usuário correspondente
         const user = users.find(u => u.login === login && u.password === password);
@@ -64,6 +65,40 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: 'Erro ao acessar o serviço de autenticação' });
     }
 })
+
+// Requisição de todos os clientes
+app.get('/customers', async (req, res) => {
+    try {
+        
+        const response = await axios.get('http://localhost:5001/customers')
+        const users = response.data
+
+        if (users) {
+            return res.status(200).json({
+                customers: users
+            })
+        } else {
+            res.status(401).json({ 
+                message: "Credenciais inválidas"
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
+    }
+})
+
+// Requisição de um cliente especifico
+app.get('/customers/id')
+
+// Criar cliente
+app.post('/customer', async (req, res) => {
+
+})
+
+// Atualizar dados de cliente
+app.put('/customers/id')
+
 
 
 server.listen(3000, () => {

@@ -17,13 +17,13 @@ npm install http express morgan helmet express-http-proxy cookie-parser body-par
 npm install cors
 
 ## Explicação dos módulos
-http: módulo de requisições HTTP
-express: criação de PIs web
-morgan: pacote de log
-helmet: segurança dos headers, como CORS
-express-http-proxy: redirecionar requisições para os microsserviços
-cookie-parser: faz parse de cookies e preenche req.cookies
-body-parser: faz parse do corpo da mensagem e preenche req.body
-jsonwebtoken: implementa JWT (JSON Web Token)
-dotenv-safe: para gerenciar variáveis de ambiente
+- http: módulo de requisições HTTP
+- express: criação de PIs web
+- morgan: pacote de log
+- helmet: segurança dos headers, como CORS
+- express-http-proxy: redirecionar requisições para os microsserviços
+- cookie-parser: faz parse de cookies e preenche req.cookies
+- body-parser: faz parse do corpo da mensagem e preenche req.body
+- jsonwebtoken: implementa JWT (JSON Web Token)
+- dotenv-safe: para gerenciar variáveis de ambiente
 
