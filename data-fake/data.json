@@ -1,0 +1,90 @@
+{
+  "authentication": [
+    {
+      "id": "f47ac10b",
+      "login": "EM.john",
+      "password": "EMPLOYEE",
+      "role": 1
+    },
+    {
+      "id": "9bb58f2b",
+      "login": "C.maria",
+      "password": "CUSTOMER",
+      "role": 2
+    },
+    {
+      "id": "a0d73d4f",
+      "login": "EM.jane",
+      "password": "EMPLOYEE",
+      "role": 1
+    },
+    {
+      "id": "b0c77f4e",
+      "login": "C.pedro",
+      "password": "CUSTOMER",
+      "role": 2
+    }
+  ],
+  "employees": [
+    {
+      "id": "f47ac10b",
+      "name": "John Doe",
+      "CPF": "12345678901",
+      "email": "john.doe@example.com",
+      "phone": "(11) 99999-1234"
+    },
+    {
+      "id": "a0d73d4f",
+      "name": "Jane Smith",
+      "CPF": "98765432100",
+      "email": "jane.smith@example.com",
+      "phone": "(21) 99999-5678"
+    }
+  ],
+  "customers": [
+    {
+      "id": "9bb58f2b",
+      "name": "Maria Fernandes",
+      "CPF": "22222222222",
+      "email": "maria.fernandes@example.com",
+      "address": {
+        "street": "Rua B",
+        "complement": "Casa 2",
+        "CEP": "22222-222"
+      }
+    },
+    {
+      "id": "b0c77f4e",
+      "name": "Pedro Souza",
+      "CPF": "33333333333",
+      "email": "pedro.souza@example.com",
+      "address": {
+        "street": "Rua C",
+        "complement": "Apartamento 12",
+        "CEP": "33333-333"
+      }
+    },
+    {
+      "id": "d0e7",
+      "name": "name test",
+      "email": "email test",
+      "CPF": "",
+      "address": {
+        "street": "Rua C",
+        "complement": "Apartamento 12",
+        "CEP": "33333-333"
+      }
+    },
+    {
+      "id": "da15",
+      "name": "name test",
+      "email": "email test",
+      "CPF": "",
+      "address": {
+        "street": "Rua C",
+        "complement": "Apartamento 12",
+        "CEP": "33333-333"
+      }
+    }
+  ]
+}

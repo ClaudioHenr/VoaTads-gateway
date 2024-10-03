@@ -3,10 +3,10 @@
 Abra dois terminais, em um execute o json server, no outro o servidor node
 
 ## Rodar json server
-json-server --port 5000 data-fake/auth.json
+json-server --port 5000 data-fake/data.json
 
 ### Em segundo plano
-json-server --port 5000 --watch data-fake/auth.json
+json-server --port 5000 --watch data-fake/data.json
 
 ## Rodar projeto
 node index.js
@@ -27,3 +27,6 @@ npm install cors
 - jsonwebtoken: implementa JWT (JSON Web Token)
 - dotenv-safe: para gerenciar variáveis de ambiente
 
+## Envio de email
+Para enviar email, use o link: https://myaccount.google.com/apppasswords e crie uma senha de aplicativo, ela que deve ser usada em EMAIL_SECRET.
+Sua conta do google deve ter autenticação por dois fatores ativada.
