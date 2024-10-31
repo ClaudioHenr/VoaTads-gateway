@@ -12,8 +12,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 require('dotenv-safe').config();
 
-const { sendEmail } = require('./utils/sendEmail')
-
 // parse application/x-www-form-urlencoded
 app.use( bodyParser.urlencoded( { extended: false } ) )
 // parse application/json
@@ -31,99 +29,48 @@ app.use(cors({
 // Cria o servidor na porta 3000
 var server = http.createServer(app);
 
+//Controllers
+const authController = require('./src/controllers/authControllers/authController')
+const customerController = require('./src/controllers/customerControllers/customerController')
+const milesController = require('./src/controllers/customerControllers/milesController')
+const employeeController = require('./src/controllers/employeeController/employeeController')
+
 // Criação dos proxies
 //const authServiceProxy = httpProxy('http://localhost:5000');
 //const customerServiceProxy = httpProxy('http://localhost:5001');
 
-
-app.get('/email', (req, res) => {
-    const { email } = req.body
-    sendEmail(email)
-})
-
 // ENDPOINT Microsserviços fake -> o json-server simula o microsserviço
 // LOGIN
-app.post('/login', async (req, res) => {
-    const { login, password } = req.body;
-    console.log("chegou")
-    try {
-        // Requisição ao json-server - Buscar Login
-        const responseAuth = await axios.get('http://localhost:5000/authentication') // URL do json-server
-        const usersAuth = responseAuth.data;
-        console.log("Lista de auths: ", usersAuth)
-        const userAuth = usersAuth.find(u => u.login === login && u.password === password)
+app.post('/login', authController.login)
 
-        // Requisição ao json-server - Buscar usuário
-        if (userAuth) {
-            if (userAuth.role === 1) {
-                const responseUser = await axios.get(`http://localhost:5000/employees/${userAuth.id}`)
-                const employee = responseUser.data
-                return res.status(200).json({
-                    message: 'Login feito com sucesso',
-                    auth: userAuth,
-                    user: employee
-                })
-            } else if (userAuth.role === 2) {
-                const responseUser = await axios.get(`http://localhost:5000/customers/${userAuth.id}`)
-                const customer = responseUser.find(u => u.id === userAuth.id)
-                return res.status(200).json({
-                    message: 'Login feito com sucesso',
-                    auth: userAuth,
-                    user: customer
-                })
-            }
-        }
-        
-        res.status(401).json({ 
-            message: "Credenciais inválidas"
-        });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de autenticação: ', error });
-    }
-})
-
-// Requisição de todos os clientes
-app.get('/customers', async (req, res) => {
-    try {
-        const response = await axios.get('http://localhost:5000/customers')
-        const users = response.data
-        if (users) {
-            return res.status(200).json({
-                customers: users
-            })
-        }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
-    }
-})
-
+// CLIENTES
+app.get('/customers', customerController.getCustomers)
 // Requisição de um cliente especifico
-app.get('/customers/id')
-
+app.get('/customers/:id', customerController.getCustomer)
 // Criar cliente
-app.post('/customers', async (req, res) => {
-    const newCustomer = req.body
-    console.log("Em body: ", req.body)
-    try {
-        // Criar cliente
-        const response = await axios.post('http://localhost:5000/customers', newCustomer)
-        console.log(response)
-        // Enviar senha (xxxx) para o email
-
-        return res.status(201).json({
-            message: "Cliente adicionado com sucesso"
-        })
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
-    }
-})
-
+app.post('/customers', customerController.createCustomer)
 // Atualizar dados de cliente
-app.put('/customers/id')
+app.put('/customers/:id', customerController.updateCustomer)
+// Remover cliente
+app.delete('/customers/:id', customerController.deleteCustomer)
+// Comprar milhas
+app.patch('/customers/miles/buy/:id', milesController.buyMiles)
+// Usar milhas
+app.patch('/customers/miles/use/:id', milesController.useMiles)
+
+// FUNCIONARIOS
+app.get('/employees', employeeController.getEmployees)
+
+app.get('/employees/:id', employeeController.getEmployee)
+
+app.post('/employees', employeeController.createEmployee)
+
+app.put('/employees/:id', employeeController.updateEmployee)
+
+app.delete('/employees/:id', employeeController.deleteEmployee)
+
+// 
+
 
 const PORT = process.env.PORT
 server.listen(PORT, () => {

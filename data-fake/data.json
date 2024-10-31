@@ -23,12 +23,18 @@
       "login": "C.pedro",
       "password": "CUSTOMER",
       "role": 2
+    },
+    {
+      "id": "9157",
+      "login": "claudio.oliveira10.0p@gmail.com",
+      "password": "5122",
+      "role": 2
     }
   ],
   "employees": [
     {
       "id": "f47ac10b",
-      "name": "John Doe",
+      "name": "John Doe Silva",
       "CPF": "12345678901",
       "email": "john.doe@example.com",
       "phone": "(11) 99999-1234"
@@ -47,8 +53,9 @@
       "name": "Maria Fernandes",
       "CPF": "22222222222",
       "email": "maria.fernandes@example.com",
+      "miles": 100,
       "address": {
-        "street": "Rua B",
+        "street": "Rua ABCDF",
         "complement": "Casa 2",
         "CEP": "22222-222"
       }
@@ -58,6 +65,7 @@
       "name": "Pedro Souza",
       "CPF": "33333333333",
       "email": "pedro.souza@example.com",
+      "miles": 500,
       "address": {
         "street": "Rua C",
         "complement": "Apartamento 12",
@@ -65,26 +73,50 @@
       }
     },
     {
-      "id": "d0e7",
+      "id": "4e88",
       "name": "name test",
-      "email": "email test",
-      "CPF": "",
+      "email": "claudio.oliveira10.0p@gmail.com",
+      "CPF": "11111111111",
+      "miles": 350,
       "address": {
         "street": "Rua C",
         "complement": "Apartamento 12",
         "CEP": "33333-333"
       }
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1212",
+      "transaction": "2024-10-30T12:45:05Z",
+      "amount": 400,
+      "transactionType": "buy",
+      "description": "Compra de milhas",
+      "id_customer": "9bb58f2b"
     },
     {
-      "id": "da15",
-      "name": "name test",
-      "email": "email test",
-      "CPF": "",
-      "address": {
-        "street": "Rua C",
-        "complement": "Apartamento 12",
-        "CEP": "33333-333"
-      }
+      "id": "13323",
+      "transaction": "2024-10-30T12:45:05Z",
+      "amount": 100,
+      "transactionType": "use",
+      "description": "Uso de milhas",
+      "id_customer": "9bb58f2b"
+    },
+    {
+      "id": "1844",
+      "transaction": "2024-10-30T12:45:05Z",
+      "amount": 5000,
+      "transactionType": "buy",
+      "description": "Compra de milhas",
+      "id_customer": "9bb58f2b"
+    },
+    {
+      "id": "6742",
+      "transaction": "2024-10-30T12:45:05Z",
+      "amount": 1000,
+      "transactionType": "use",
+      "description": "Uso de milhas",
+      "id_customer": "9bb58f2b"
     }
   ]
 }

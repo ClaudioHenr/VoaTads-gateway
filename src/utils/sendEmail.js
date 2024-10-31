@@ -12,13 +12,13 @@ const transporter = nodemail.createTransport({
     }
 })
 
-function sendEmail(to) {
+function sendEmail(toSend, password) {
     try {
         const mailOptions = {
             from: process.env.EMAIL_SENDER,
-            to: 'claudio.oliveira10.0p@gmail.com',
+            to: toSend,
             subject: 'Acesso ao VoaTads',
-            text: `Olá, sua senha de acesso ao VoaTads é: ` 
+            text: `Olá, sua senha de acesso ao VoaTads é: ${password}` 
         }
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
@@ -35,5 +35,3 @@ function sendEmail(to) {
 }
 
 module.exports = { sendEmail }
-
-
