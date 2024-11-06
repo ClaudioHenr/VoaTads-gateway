@@ -142,23 +142,21 @@
       "login": "vinicius_servelo@hotmail.com",
       "password": "9163",
       "role": 1
+    },
+    {
+      "id": "3c50",
+      "login": "sem@sem",
+      "password": "7764",
+      "role": 1
+    },
+    {
+      "id": "0e00",
+      "login": "sem@sem",
+      "password": "9291",
+      "role": 1
     }
   ],
   "employees": [
-    {
-      "id": "f47ac10b",
-      "name": "John Doe Silva",
-      "cpf": "12345678901",
-      "email": "john.doe@example.com",
-      "phone": "(11) 99999-1234"
-    },
-    {
-      "id": "a0d73d4f",
-      "name": "Jane Smith",
-      "cpf": "98765432100",
-      "email": "jane.smith@example.com",
-      "phone": "(21) 99999-5678"
-    },
     {
       "id": "b00c",
       "name": "Viniizao teste api",
@@ -217,13 +215,6 @@
       "cpf": "134.792.469-81",
       "email": "sem@sem",
       "phone": "(41) 99974-7471"
-    },
-    {
-      "id": "5077",
-      "name": "aaaaaaaaaaaaaaa",
-      "cpf": "134.792.469-85",
-      "email": "vinicius_servelo@hotmail.com",
-      "phone": "(41) 99974-7476"
     }
   ],
   "customers": [
