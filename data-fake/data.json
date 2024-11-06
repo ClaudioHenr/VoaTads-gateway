@@ -29,22 +29,201 @@
       "login": "claudio.oliveira10.0p@gmail.com",
       "password": "5122",
       "role": 2
+    },
+    {
+      "id": "c8eb",
+      "login": "sem@sem",
+      "password": "3628",
+      "role": 1
+    },
+    {
+      "id": "98ce",
+      "login": "sem@sem",
+      "password": "2408",
+      "role": 1
+    },
+    {
+      "id": "4817",
+      "login": "sem@sem",
+      "password": "5912",
+      "role": 1
+    },
+    {
+      "id": "d18d",
+      "login": "sem@sem",
+      "password": "7281",
+      "role": 1
+    },
+    {
+      "id": "930c",
+      "login": "sem@sem",
+      "password": "4662",
+      "role": 1
+    },
+    {
+      "id": "79df",
+      "login": "sem@sem",
+      "password": "7687",
+      "role": 1
+    },
+    {
+      "id": "153b",
+      "login": "sem@sem",
+      "password": "1866",
+      "role": 1
+    },
+    {
+      "id": "c547",
+      "login": "sem@sem",
+      "password": "7119",
+      "role": 1
+    },
+    {
+      "id": "ea58",
+      "login": "sem@sem",
+      "password": "7839",
+      "role": 1
+    },
+    {
+      "id": "7e79",
+      "login": "sem@sem",
+      "password": "9906",
+      "role": 1
+    },
+    {
+      "id": "92d1",
+      "login": "serieb@cap",
+      "password": "7349",
+      "role": 1
+    },
+    {
+      "id": "02f8",
+      "login": "viniratzke@gmail.com",
+      "password": "5286",
+      "role": 1
+    },
+    {
+      "id": "1cd9",
+      "login": "sem@sem",
+      "password": "4202",
+      "role": 1
+    },
+    {
+      "id": "6861",
+      "password": "4618",
+      "role": 1
+    },
+    {
+      "id": "0129",
+      "login": "john.doe@example.com",
+      "password": "3381",
+      "role": 1
+    },
+    {
+      "id": "c2cd",
+      "login": "sem@sem",
+      "password": "1196",
+      "role": 1
+    },
+    {
+      "id": "7b6c",
+      "login": "vinicius_servelo@hotmail.com",
+      "password": "4676",
+      "role": 1
+    },
+    {
+      "id": "f52e",
+      "login": "sem@sem",
+      "password": "7245",
+      "role": 1
+    },
+    {
+      "id": "6194",
+      "login": "vinicius_servelo@hotmail.com",
+      "password": "9163",
+      "role": 1
     }
   ],
   "employees": [
     {
       "id": "f47ac10b",
       "name": "John Doe Silva",
-      "CPF": "12345678901",
+      "cpf": "12345678901",
       "email": "john.doe@example.com",
       "phone": "(11) 99999-1234"
     },
     {
       "id": "a0d73d4f",
       "name": "Jane Smith",
-      "CPF": "98765432100",
+      "cpf": "98765432100",
       "email": "jane.smith@example.com",
       "phone": "(21) 99999-5678"
+    },
+    {
+      "id": "b00c",
+      "name": "Viniizao teste api",
+      "cpf": "99999999999",
+      "email": "sem@sem",
+      "phone": "41999747476"
+    },
+    {
+      "id": "c2a9",
+      "name": "Guilike Vai cair pra série B",
+      "cpf": "99999999999",
+      "email": "serieb@cap",
+      "phone": "55555555555"
+    },
+    {
+      "id": "6d6b",
+      "name": "Vini teste 2",
+      "cpf": "99999999999",
+      "email": "viniratzke@gmail.com",
+      "phone": "11111111111"
+    },
+    {
+      "id": "c85a",
+      "name": "ATeste",
+      "cpf": "134.792.469-85",
+      "email": "sem@sem",
+      "phone": "41999747476"
+    },
+    {
+      "id": "4dd4"
+    },
+    {
+      "id": "836a",
+      "name": "John",
+      "cpf": "12345678901",
+      "email": "john.doe@example.com",
+      "number": "(11) 99999-1234"
+    },
+    {
+      "id": "71be",
+      "name": "ATeste",
+      "cpf": "13479246981",
+      "email": "sem@sem",
+      "phone": "41999747476"
+    },
+    {
+      "id": "84e6",
+      "name": "Vinicius R Servelo",
+      "cpf": "99999999999",
+      "email": "vinicius_servelo@hotmail.com",
+      "phone": "41999747476"
+    },
+    {
+      "id": "14b2",
+      "name": "Teste Visu",
+      "cpf": "134.792.469-81",
+      "email": "sem@sem",
+      "phone": "(41) 99974-7471"
+    },
+    {
+      "id": "5077",
+      "name": "aaaaaaaaaaaaaaa",
+      "cpf": "134.792.469-85",
+      "email": "vinicius_servelo@hotmail.com",
+      "phone": "(41) 99974-7476"
     }
   ],
   "customers": [

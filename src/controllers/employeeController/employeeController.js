@@ -56,6 +56,7 @@ async function createEmployee(req, res) {
     }
 }
 
+
 async function updateEmployee(req, res) {
     const { id } = req.params
     const updateEmployee = req.body
