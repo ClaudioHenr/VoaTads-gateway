@@ -47,6 +47,8 @@ app.post('/login', authController.login)
 app.get('/customers', customerController.getCustomers)
 // Requisição de um cliente especifico
 app.get('/customers/:id', customerController.getCustomer)
+//Transações de um cliente
+app.get('/customers/:id/transactions', customerController.getTransactionsByCustomer);
 // Criar cliente
 app.post('/customers', customerController.createCustomer)
 // Atualizar dados de cliente

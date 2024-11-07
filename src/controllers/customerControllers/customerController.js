@@ -92,4 +92,18 @@ async function deleteCustomer(req, res) {
     }
 }
 
-module.exports = { getCustomers, getCustomer, createCustomer, updateCustomer, deleteCustomer }
+async function getTransactionsByCustomer(req, res) {
+    const { id } = req.params;
+    try {
+        const response = await axios.get(`${customerServiceUrl}/customers/${id}/transactions`);
+        const transactions = response.data;
+        if (transactions) {
+            return res.status(200).json(transactions);
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao acessar o serviço de transações' });
+    }
+}
+
+module.exports = { getCustomers, getCustomer, createCustomer, updateCustomer, deleteCustomer, getTransactionsByCustomer }
