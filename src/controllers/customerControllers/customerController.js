@@ -3,9 +3,11 @@ const axios = require('axios')
 // Utils
 const { sendEmail } = require('../../utils/sendEmail')
 
+const customerServiceUrl = 'http://localhost:8080';
+
 async function getCustomers(req, res) {
     try {
-        const response = await axios.get('http://localhost:5000/customers')
+        const response = await axios.get(`${customerServiceUrl}/customers`)
         const users = response.data
         if (users) {
             return res.status(200).json({
@@ -19,14 +21,15 @@ async function getCustomers(req, res) {
 }
 
 async function getCustomer(req, res) {
-    const { id } = req.params
+    const { id } = req.params;
     try {
-        const response = await axios.get(`http://localhost:5000/customers/${id}`)
-        const user = response.data
+        const response = await axios.get(`${customerServiceUrl}/customers/${id}`);
+        const user = response.data;
         if (user) {
             return res.status(200).json({
-                customers: user
-            })
+                customers: user,
+                miles: user.miles
+            });
         }
     } catch (error) {
         console.error(error);
@@ -39,7 +42,7 @@ async function createCustomer(req, res) {
     console.log("Em body: ", req.body)
     try {
         // Criar cliente
-        const response = await axios.post('http://localhost:5000/customers', newCustomer)
+        const response = await axios.post(`${customerServiceUrl}/customers`, newCustomer)
         console.log(response.data)
         // Criar autenticação
         const randomPassword = Math.floor(1000 + Math.random() * 9000).toString()
@@ -62,7 +65,7 @@ async function updateCustomer(req, res) {
     const updateCustomer = req.body
     console.log("Em body: ", req.body)
     try {
-        const response = await axios.put(`http://localhost:5000/customers/${id}`, updateCustomer)
+        const response = await axios.put(`${customerServiceUrl}/customers/${id}`, updateCustomer)
         console.log(response.data)
         return res.status(200).json({
             message: "Cliente atualizado com sucesso"
@@ -76,7 +79,7 @@ async function updateCustomer(req, res) {
 async function deleteCustomer(req, res) {
     const { id } = req.params
     try {
-        const response = await axios.delete(`http://localhost:5000/customers/${id}`)
+        const response = await axios.delete(`${customerServiceUrl}/customers/${id}`)
         const user = response.data
         if (user) {
             return res.status(200).json({

@@ -54,7 +54,8 @@ app.put('/customers/:id', customerController.updateCustomer)
 // Remover cliente
 app.delete('/customers/:id', customerController.deleteCustomer)
 // Comprar milhas
-app.patch('/customers/miles/buy/:id', milesController.buyMiles)
+app.post('/customers/:id/transactions', milesController.buyMiles)
+app.patch('/customers/:id/miles/buy', milesController.buyMiles)
 // Usar milhas
 app.patch('/customers/miles/use/:id', milesController.useMiles)
 

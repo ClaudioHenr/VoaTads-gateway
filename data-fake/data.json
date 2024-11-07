@@ -7,7 +7,7 @@
       "role": 1
     },
     {
-      "id": "9bb58f2b",
+      "id": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e",
       "login": "C.maria",
       "password": "CUSTOMER",
       "role": 2
@@ -219,7 +219,7 @@
   ],
   "customers": [
     {
-      "id": "9bb58f2b",
+      "id": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e",
       "name": "Maria Fernandes",
       "CPF": "22222222222",
       "email": "maria.fernandes@example.com",
@@ -262,7 +262,7 @@
       "amount": 400,
       "transactionType": "buy",
       "description": "Compra de milhas",
-      "id_customer": "9bb58f2b"
+      "id_customer": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e"
     },
     {
       "id": "13323",
@@ -270,7 +270,7 @@
       "amount": 100,
       "transactionType": "use",
       "description": "Uso de milhas",
-      "id_customer": "9bb58f2b"
+      "id_customer": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e"
     },
     {
       "id": "1844",
@@ -278,7 +278,7 @@
       "amount": 5000,
       "transactionType": "buy",
       "description": "Compra de milhas",
-      "id_customer": "9bb58f2b"
+      "id_customer": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e"
     },
     {
       "id": "6742",
@@ -286,7 +286,7 @@
       "amount": 1000,
       "transactionType": "use",
       "description": "Uso de milhas",
-      "id_customer": "9bb58f2b"
+      "id_customer": "ad237302-4b0c-48bf-abd9-d01a0c6e8a2e"
     }
   ]
 }
