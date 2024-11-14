@@ -2,32 +2,30 @@ const axios = require('axios')
 
 async function login(req, res) {
     const { login, password } = req.body;
-    console.log("chegou")
     try {
-        // Requisição ao json-server - Buscar Login
-        const responseAuth = await axios.get('http://localhost:5000/authentication') // URL do json-server
-        const usersAuth = responseAuth.data;
-        console.log("Lista de auths: ", usersAuth)
-        const userAuth = usersAuth.find(u => u.login === login && u.password === password)
+        const auth = { "login": login, "password": password }
+        const responseAuth = await axios.post('http://localhost:5000/login', auth)
+        const userAuth = responseAuth.data;
         if (!userAuth){
             return res.status(404).json({ 
                 message: "Usuário não encontrado"
             });
         }
-
-        // Requisição ao json-server - Buscar usuário
         if (userAuth) {
-            if (userAuth.role === 1) {
-                const responseUser = await axios.get(`http://localhost:5000/employees/${userAuth.id}`)
+            if (userAuth.type == '1') {
+                const responseUser = await axios.get(`http://localhost:5001/employees/${userAuth.idUser}`)
                 const employee = responseUser.data
                 return res.status(200).json({
                     message: 'Login feito com sucesso',
                     auth: userAuth,
                     user: employee
                 })
-            } else if (userAuth.role === 2) {
-                const responseUser = await axios.get(`http://localhost:5000/customers/${userAuth.id}`)
-                const customer = responseUser.find(u => u.id === userAuth.id)
+            } else if (userAuth.type == '2') {
+                console.log(userAuth.type)
+                console.log(userAuth.idUser)
+                const responseUser = await axios.get(`http://localhost:5002/customers/${userAuth.idUser}`)
+                const customer = responseUser.data
+                console.log(responseUser.data.customer)
                 return res.status(200).json({
                     message: 'Login feito com sucesso',
                     auth: userAuth,
@@ -41,8 +39,8 @@ async function login(req, res) {
         });
 
     } catch (error) {
-        console.error("Erro ao acessar o serviço de autenticação:", error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de autenticação: ', error: error.message });
+        console.log(error.message)
+        return res.status(500).json({ message: 'Erro na autenticação', error});
     }
 }
 

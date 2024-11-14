@@ -3,7 +3,7 @@ const axios = require('axios')
 // Utils
 const { sendEmail } = require('../../utils/sendEmail')
 
-const customerServiceUrl = 'http://localhost:8080';
+const customerServiceUrl = 'http://localhost:5002';
 
 async function getCustomers(req, res) {
     try {
@@ -16,7 +16,7 @@ async function getCustomers(req, res) {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
+        res.status(500).json({ message: 'Erro serviço cliente' });
     }
 }
 
@@ -33,22 +33,21 @@ async function getCustomer(req, res) {
         }
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
+        res.status(500).json({ message: 'Erro serviço cliente' });
     }
 }
 
 async function createCustomer(req, res) {
     const newCustomer = req.body
-    console.log("Em body: ", req.body)
     try {
         // Criar cliente
-        const response = await axios.post(`${customerServiceUrl}/customers`, newCustomer)
-        console.log(response.data)
+        console.log(newCustomer)
+        const response = await axios.post(`http://localhost:5002/customers`, newCustomer)
         // Criar autenticação
         const randomPassword = Math.floor(1000 + Math.random() * 9000).toString()
         console.log("Senha: ", randomPassword)
-        const authUser = {"login": response.data.email, "password": randomPassword, "role": 2}
-        const responseAuth = await axios.post('http://localhost:5000/authentication', authUser)
+        const authUser = {"login": response.data.email, "password": randomPassword, "id_user": response.data.id}
+        const responseAuth = await axios.post('http://localhost:5000/login/create', authUser)
         // Enviar senha (xxxx) para o email
         sendEmail(response.data.email, randomPassword)
         return res.status(201).json({
@@ -56,7 +55,7 @@ async function createCustomer(req, res) {
         })
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de clientes' });
+        return res.status(500).json({ message: 'Erro serviço cliente', error});
     }
 }
 

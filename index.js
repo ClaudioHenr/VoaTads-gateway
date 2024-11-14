@@ -34,6 +34,7 @@ const authController = require('./src/controllers/authControllers/authController
 const customerController = require('./src/controllers/customerControllers/customerController')
 const milesController = require('./src/controllers/customerControllers/milesController')
 const employeeController = require('./src/controllers/employeeController/employeeController')
+const flightController = require('./src/controllers/flightController/flightController')
 
 // Criação dos proxies
 //const authServiceProxy = httpProxy('http://localhost:5000');
@@ -72,8 +73,8 @@ app.put('/employees/:id', employeeController.updateEmployee)
 
 app.delete('/employees/:id', employeeController.deleteEmployee)
 
-// 
-
+// VOOS
+app.get('/flights', flightController.getFlights)
 
 const PORT = process.env.PORT
 server.listen(PORT, () => {
