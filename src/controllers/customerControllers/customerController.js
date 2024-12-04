@@ -54,7 +54,7 @@ async function createCustomer(req, res) {
             message: "Cliente adicionado com sucesso"
         })
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         return res.status(500).json({ message: 'Erro serviço cliente', error});
     }
 }
