@@ -3,7 +3,8 @@ const axios = require('axios')
 // Utils
 const { sendEmail } = require('../../utils/sendEmail')
 
-const customerServiceUrl = 'http://localhost:5002';
+const customerServiceUrl = 'http://localhost:5002'; // URL do serviço de customer
+const sagaServiceUrl = 'http://localhost:5010'; // URL do serviço de saga
 
 async function getCustomers(req, res) {
     try {
@@ -40,22 +41,15 @@ async function getCustomer(req, res) {
 async function createCustomer(req, res) {
     const newCustomer = req.body
     try {
-        // Criar cliente
+        // Enviar solicitação para a saga
         console.log(newCustomer)
-        const response = await axios.post(`http://localhost:5002/customers`, newCustomer)
-        // Criar autenticação
-        const randomPassword = Math.floor(1000 + Math.random() * 9000).toString()
-        console.log("Senha: ", randomPassword)
-        const authUser = {"login": response.data.email, "password": randomPassword, "id_user": response.data.id}
-        const responseAuth = await axios.post('http://localhost:5000/login/create', authUser)
-        // Enviar senha (xxxx) para o email
-        sendEmail(response.data.email, randomPassword)
+        const response = await axios.post(`${sagaServiceUrl}/customers/create`, newCustomer)
         return res.status(201).json({
-            message: "Cliente adicionado com sucesso"
+            message: "Solicitação de criação de cliente enviada com sucesso"
         })
     } catch (error) {
-        // console.error(error);
-        return res.status(500).json({ message: 'Erro serviço cliente', error});
+        console.error(error);
+        res.status(500).json({ message: 'Erro na criação de cliente' });
     }
 }
 

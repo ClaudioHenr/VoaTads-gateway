@@ -85,7 +85,7 @@ app.post('/flights/travels', flightController.getTravels)
 
 // SAGA
 app.post('/bookings/create', sagaController.createBooking)
-
+app.post('/customers/create', sagaController.createCustomer)
 
 
 const PORT = process.env.PORT
