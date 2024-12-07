@@ -45,4 +45,28 @@ async function createCustomer(req, res) {
     }
 }
 
-module.exports = { createBooking, createCustomer };
+async function createEmployee(req, res) {
+    const newEmployee = req.body;
+    const password = generateRandomPassword();
+    newEmployee.password = password; // Adiciona a senha aleatória ao objeto newEmployee
+    try {
+        console.log(newEmployee);
+        const response = await axios.post(`http://localhost:5010/employees/create`, newEmployee, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.status === 201) {
+            // Enviar e-mail de sucesso
+            await sendEmail(newEmployee.email, password);
+            return res.status(201).json({
+                message: "Solicitação de criação de funcionário enviada com sucesso"
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro na criação de funcionário' });
+    }
+}
+
+module.exports = { createBooking, createCustomer, createEmployee };

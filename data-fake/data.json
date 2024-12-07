@@ -154,67 +154,39 @@
       "login": "sem@sem",
       "password": "9291",
       "role": 1
+    },
+    {
+      "id": "1fe4",
+      "login": "se@se",
+      "password": "4259",
+      "role": 1
+    },
+    {
+      "id": "db21",
+      "password": "7013",
+      "role": 1
+    },
+    {
+      "id": "81db",
+      "login": "ddsd@sem",
+      "password": "1039",
+      "role": 1
     }
   ],
   "employees": [
     {
-      "id": "b00c",
-      "name": "Viniizao teste api",
+      "id": "2a79",
+      "name": "aaaaaaaaaaaaaaaaaaa",
+      "cpf": "134.792.469-82",
+      "email": "se@se",
+      "phone": "11111111111111111"
+    },
+    {
+      "id": "313b",
+      "name": "sss",
       "cpf": "99999999999",
-      "email": "sem@sem",
+      "email": "ddsd@sem",
       "phone": "41999747476"
-    },
-    {
-      "id": "c2a9",
-      "name": "Guilike Vai cair pra série B",
-      "cpf": "99999999999",
-      "email": "serieb@cap",
-      "phone": "55555555555"
-    },
-    {
-      "id": "6d6b",
-      "name": "Vini teste 2",
-      "cpf": "99999999999",
-      "email": "viniratzke@gmail.com",
-      "phone": "11111111111"
-    },
-    {
-      "id": "c85a",
-      "name": "ATeste",
-      "cpf": "134.792.469-85",
-      "email": "sem@sem",
-      "phone": "41999747476"
-    },
-    {
-      "id": "4dd4"
-    },
-    {
-      "id": "836a",
-      "name": "John",
-      "cpf": "12345678901",
-      "email": "john.doe@example.com",
-      "number": "(11) 99999-1234"
-    },
-    {
-      "id": "71be",
-      "name": "ATeste",
-      "cpf": "13479246981",
-      "email": "sem@sem",
-      "phone": "41999747476"
-    },
-    {
-      "id": "84e6",
-      "name": "Vinicius R Servelo",
-      "cpf": "99999999999",
-      "email": "vinicius_servelo@hotmail.com",
-      "phone": "41999747476"
-    },
-    {
-      "id": "14b2",
-      "name": "Teste Visu",
-      "cpf": "134.792.469-81",
-      "email": "sem@sem",
-      "phone": "(41) 99974-7471"
     }
   ],
   "customers": [
