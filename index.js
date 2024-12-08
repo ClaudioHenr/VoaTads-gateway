@@ -90,8 +90,9 @@ app.get('/flights/airports', flightController.getAirports);
 app.post('/flights/travels', flightController.getTravels);
 
 // SAGA
-app.post('/bookings/create', sagaController.createBooking);
-app.post('/customers/create', sagaController.createCustomer);
+app.post('/bookings/create', sagaController.createBooking)
+app.post('/customers/create', sagaController.createCustomer)
+app.post('/employees/create', sagaController.createEmployee)
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
