@@ -11,9 +11,9 @@ async function buyMiles(req, res) {
     };
 
     try {
-        const transactionResponse = await axios.post(`http://localhost:8080/customers/${id}/transactions`, transactionPayload);
+        const transactionResponse = await axios.post(`http://localhost:5002/customers/${id}/transactions`, transactionPayload);
         if (transactionResponse.status === 201) {
-            const user = await axios.patch(`http://localhost:8080/customers/${id}/miles/buy`, { miles });
+            const user = await axios.patch(`http://localhost:5002/customers/${id}/miles/buy`, { miles });
             return res.status(201).json({
                 message: "Milhas adicionadas a conta com sucesso"
             });
@@ -30,7 +30,7 @@ async function useMiles(req, res) {
     const { id } = req.params;
     const { miles } = req.body;
     try {
-        const user = await axios.patch(`http://localhost:8080/customers/${id}`, { "miles": miles });
+        const user = await axios.patch(`http://localhost:5002/customers/${id}`, { "miles": miles });
         const transaction = {
             transaction: new Date().toISOString(),
             amount: miles,
@@ -38,7 +38,7 @@ async function useMiles(req, res) {
             description: "Uso de milhas",
             id_customer: id
         };
-        await axios.post(`http://localhost:8080/transactions`, transaction);
+        await axios.post(`http://localhost:5002/transactions`, transaction);
         return res.status(201).json({
             message: "Milhas usadas com sucesso"
         });
