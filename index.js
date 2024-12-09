@@ -35,6 +35,7 @@ const customerController = require('./src/controllers/customerControllers/custom
 const milesController = require('./src/controllers/customerControllers/milesController')
 const employeeController = require('./src/controllers/employeeController/employeeController')
 const flightController = require('./src/controllers/flightController/flightController')
+const bookingController = require('./src/controllers/bookingController/bookingController')
 const sagaController = require('./src/controllers/sagaController/sagaController')
 
 // Criação dos proxies
@@ -82,6 +83,10 @@ app.post('/flights', flightController.createFlight)
 app.get('/flights/airports', flightController.getAirports)
 
 app.post('/flights/travels', flightController.getTravels)
+
+// RESERVAS
+app.get('/bookings/view/:id', bookingController.getBookingFlight)
+app.patch('/bookings/cancel/:id', bookingController.cancelBooking)
 
 // SAGA
 app.post('/bookings/create', sagaController.createBooking)
