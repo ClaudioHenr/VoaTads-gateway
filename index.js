@@ -55,6 +55,7 @@ const milesController = require('./src/controllers/customerControllers/milesCont
 const employeeController = require('./src/controllers/employeeController/employeeController')
 const flightController = require('./src/controllers/flightController/flightController')
 const sagaController = require('./src/controllers/sagaController/sagaController')
+const bookingController = require('./src/controllers/bookingController/bookingController')
 
 // Criação dos proxies
 //const authServiceProxy = httpProxy('http://localhost:5000');
@@ -89,12 +90,13 @@ app.delete('/employees/:id', employeeController.deleteEmployee);
 
 // VOOS
 app.get('/flights', flightController.getFlights)
-
 app.post('/flights', flightController.createFlight)
-
 app.get('/flights/airports', flightController.getAirports)
-
 app.post('/flights/travels', flightController.getTravels)
+
+// RESERVAS
+app.get('bookings/view/:id', bookingController.getBookingFlight)
+app.patch('bookings/cancel/:id', bookingController.cancelBooking)
 
 // SAGA
 app.post('/bookings/create', sagaController.createBooking)
