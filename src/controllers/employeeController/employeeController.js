@@ -72,16 +72,11 @@ async function updateEmployee(req, res) {
 async function deleteEmployee(req, res) {
     const { id } = req.params
     try {
-        const response = await axios.delete(`${employeeServiceUrl}/employees/${id}`)
-        const user = response.data
-        if (user) {
-            return res.status(200).json({
-                employees: user
-            })
-        }
+        const response = await axios.put(`${sagaServiceUrl}/employees/delete/${id}`);
+        res.status(response.status).send(response.data);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Erro ao acessar o serviço de funcionarios' });
+        console.error(`Error deleting employee with id ${id}:`, error);
+        res.status(error.response ? error.response.status : 500).send(error.message);
     }
 }
 

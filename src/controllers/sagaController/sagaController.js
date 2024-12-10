@@ -85,4 +85,15 @@ async function updateEmployee(req, res) {
     }
 }
 
-module.exports = { createBooking, createCustomer, createEmployee, updateEmployee };
+async function deleteEmployee(req, res) {
+    const { id } = req.params
+    try {
+        const response = await axios.put(`http://localhost:5010/employees/delete/${id}`);
+        res.status(response.status).send(response.data);
+    } catch (error) {
+        console.error(`Error deleting employee with id ${id}:`, error);
+        res.status(error.response ? error.response.status : 500).send(error.message);
+    }
+}
+
+module.exports = { createBooking, createCustomer, createEmployee, updateEmployee, deleteEmployee };

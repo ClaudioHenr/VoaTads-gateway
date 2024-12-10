@@ -104,6 +104,7 @@ app.post('/bookings/create', sagaController.createBooking)
 app.post('/customers/create', sagaController.createCustomer)
 app.post('/employees/create', sagaController.createEmployee)
 app.put('/employees/update/:id', sagaController.updateEmployee)
+app.put('/employees/delete/:id', sagaController.deleteEmployee)
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
