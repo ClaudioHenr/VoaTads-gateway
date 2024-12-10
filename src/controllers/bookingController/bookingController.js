@@ -54,4 +54,24 @@ async function cancelBooking(req, res) {
     }
 }
 
-module.exports = { getBookingFlight, cancelBooking }
+async function checkInBooking(req, res) {
+    const { id } = req.params
+    try {
+        const response = await axios.patch(`${bookingServiceUri}/bookings/checkin/${id}`)
+        console.log(response.status)
+        if (response.status == 200) {
+            return res.status(200).json({
+                message: "Check-in realizado com sucesso"
+            })
+        } else {
+            return res.status(500).json({ 
+                message: 'Erro ao realizar check-in' 
+            });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao acessar serviço de reservas' });
+    }   
+}
+
+module.exports = { getBookingFlight, cancelBooking, checkInBooking }

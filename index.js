@@ -29,21 +29,21 @@ app.use(cors({
 }));
 
 // Middleware para verificar o token JWT
-app.use((req, res, next) => {
-    const publicRoutes = ['/login', '/register'];
-    if (publicRoutes.includes(req.path)) {
-        return next();
-    }
+// app.use((req, res, next) => {
+//     const publicRoutes = ['/login', '/register'];
+//     if (publicRoutes.includes(req.path)) {
+//         return next();
+//     }
 
-    const authHeader = req.headers['authorization'];
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-        const token = authHeader.split(' ')[1];
-        if (validateToken(token)) {
-            return next();
-        }
-    }
-    res.status(401).json({ message: 'Token inválido ou ausente' });
-});
+//     const authHeader = req.headers['authorization'];
+//     if (authHeader && authHeader.startsWith('Bearer ')) {
+//         const token = authHeader.split(' ')[1];
+//         if (validateToken(token)) {
+//             return next();
+//         }
+//     }
+//     res.status(401).json({ message: 'Token inválido ou ausente' });
+// });
 
 // Cria o servidor na porta 3000
 var server = http.createServer(app);
@@ -95,8 +95,9 @@ app.get('/flights/airports', flightController.getAirports)
 app.post('/flights/travels', flightController.getTravels)
 
 // RESERVAS
-app.get('bookings/view/:id', bookingController.getBookingFlight)
-app.patch('bookings/cancel/:id', bookingController.cancelBooking)
+app.get('/bookings/view/:id', bookingController.getBookingFlight)
+app.patch('/bookings/cancel/:id', bookingController.cancelBooking)
+app.patch('/bookings/checkin/:id', bookingController.checkInBooking)
 
 // SAGA
 app.post('/bookings/create', sagaController.createBooking)
