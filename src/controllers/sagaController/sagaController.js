@@ -69,4 +69,20 @@ async function createEmployee(req, res) {
     }
 }
 
-module.exports = { createBooking, createCustomer, createEmployee };
+async function updateEmployee(req, res) {
+    const { id } = req.params
+    const updateEmployee = req.body
+    console.log("Em body: ", req.body)
+    try {
+        const response = await axios.put(`http://localhost:5010/employees/update/${id}`, updateEmployee)
+        console.log(response.data)
+        return res.status(200).json({
+            message: "funcionario atualizado com sucesso"
+        })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Erro ao acessar o serviço de funcionarios' });
+    }
+}
+
+module.exports = { createBooking, createCustomer, createEmployee, updateEmployee };

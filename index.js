@@ -103,6 +103,7 @@ app.patch('/bookings/checkin/:id', bookingController.checkInBooking)
 app.post('/bookings/create', sagaController.createBooking)
 app.post('/customers/create', sagaController.createCustomer)
 app.post('/employees/create', sagaController.createEmployee)
+app.put('/employees/update/:id', sagaController.updateEmployee)
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {

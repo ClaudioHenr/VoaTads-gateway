@@ -58,7 +58,7 @@ async function updateEmployee(req, res) {
     const updateEmployee = req.body
     console.log("Em body: ", req.body)
     try {
-        const response = await axios.put(`${employeeServiceUrl}/employees/${id}`, updateEmployee)
+        const response = await axios.put(`${sagaServiceUrl}/employees/update/${id}`, updateEmployee)
         console.log(response.data)
         return res.status(200).json({
             message: "funcionario atualizado com sucesso"
