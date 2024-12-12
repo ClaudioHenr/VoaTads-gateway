@@ -5,7 +5,7 @@ async function login(req, res) {
     const { login, password } = req.body;
     try {
         const auth = { "login": login, "password": password };
-        const responseAuth = await axios.post('http://localhost:5000/login', auth);
+        const responseAuth = await axios.post('http://authentication:5000/login', auth);
         const userAuth = responseAuth.data;
         if (!userAuth) {
             return res.status(404).json({ 
@@ -15,7 +15,7 @@ async function login(req, res) {
         if (userAuth) {
             const token = generateToken(userAuth.login); // Gerar o token JWT
             if (userAuth.type == '1') {
-                const responseUser = await axios.get(`http://localhost:5001/employees/email/${userAuth.login}`);
+                const responseUser = await axios.get(`http://employee:5001/employees/email/${userAuth.login}`);
                 const employee = responseUser.data;
                 return res.status(200).json({
                     message: 'Login feito com sucesso',
@@ -24,7 +24,7 @@ async function login(req, res) {
                     token: token // Retornar o token JWT
                 });
             } else if (userAuth.type == '2') {
-                const responseUser = await axios.get(`http://localhost:5002/customers/email/${userAuth.login}`);
+                const responseUser = await axios.get(`http://customer:5002/customers/email/${userAuth.login}`);
                 const customer = responseUser.data;
                 return res.status(200).json({
                     message: 'Login feito com sucesso',

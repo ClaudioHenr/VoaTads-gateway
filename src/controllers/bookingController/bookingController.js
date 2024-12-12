@@ -1,7 +1,7 @@
 const axios = require('axios')
 
-const bookingServiceUri = 'http://localhost:5006';
-const flightsServiceUri = 'http://localhost:5004';
+const bookingServiceUri = 'http://booking:5006';
+const flightsServiceUri = 'http://flights:5004';
 
 async function getBookingFlight(req, res) {
     const { id } = req.params;

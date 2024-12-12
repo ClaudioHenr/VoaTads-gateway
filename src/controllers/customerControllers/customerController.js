@@ -3,8 +3,8 @@ const axios = require('axios')
 // Utils
 const { sendEmail } = require('../../utils/sendEmail')
 
-const customerServiceUrl = 'http://localhost:5002'; // URL do serviço de customer
-const sagaServiceUrl = 'http://localhost:5010'; // URL do serviço de saga
+const customerServiceUrl = 'http://customer:5002'; // URL do serviço de customer
+const sagaServiceUrl = 'http://saga:5010'; // URL do serviço de saga
 
 async function getCustomers(req, res) {
     try {

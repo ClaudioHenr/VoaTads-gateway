@@ -8,7 +8,7 @@ function generateRandomPassword() {
 async function createBooking(req, res) {
     const newBooking = req.body;
     try {
-        const response = await axios.post(`http://localhost:5010/bookings/create`, newBooking);
+        const response = await axios.post(`http://saga:5010/bookings/create`, newBooking);
         const booking = response.data;
         if (booking) {
             return res.status(200).json({
@@ -27,7 +27,7 @@ async function createCustomer(req, res) {
     newCustomer.password = password; // Adiciona a senha aleatória ao objeto newCustomer
     try {
         console.log(newCustomer);
-        const response = await axios.post(`http://localhost:5010/customers/create`, newCustomer, {
+        const response = await axios.post(`http://saga:5010/customers/create`, newCustomer, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -51,14 +51,12 @@ async function createEmployee(req, res) {
     newEmployee.password = password; // Adiciona a senha aleatória ao objeto newEmployee
     try {
         console.log(newEmployee);
-        const response = await axios.post(`http://localhost:5010/employees/create`, newEmployee, {
+        const response = await axios.post(`http://saga:5010/employees/create`, newEmployee, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         if (response.status === 201) {
-            // Enviar e-mail de sucesso
-            await sendEmail(newEmployee.email, password);
             return res.status(201).json({
                 message: "Solicitação de criação de funcionário enviada com sucesso"
             });
@@ -74,7 +72,7 @@ async function updateEmployee(req, res) {
     const updateEmployee = req.body
     console.log("Em body: ", req.body)
     try {
-        const response = await axios.put(`http://localhost:5010/employees/update/${id}`, updateEmployee)
+        const response = await axios.put(`http://saga:5010/employees/update/${id}`, updateEmployee)
         console.log(response.data)
         return res.status(200).json({
             message: "funcionario atualizado com sucesso"
@@ -88,7 +86,7 @@ async function updateEmployee(req, res) {
 async function deleteEmployee(req, res) {
     const { id } = req.params
     try {
-        const response = await axios.put(`http://localhost:5010/employees/delete/${id}`);
+        const response = await axios.put(`http://saga:5010/employees/delete/${id}`);
         res.status(response.status).send(response.data);
     } catch (error) {
         console.error(`Error deleting employee with id ${id}:`, error);
